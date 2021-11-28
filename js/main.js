@@ -39,7 +39,7 @@ document.getElementById('ingreso-form').addEventListener('submit',function(e){
 	const usu = (nombre);
 	const ui = new verificacion();
 	ui.mostrarmensaje('como sea');
-	e.preventDefault();
+	// e.preventDefault();
 	
 	
 	
