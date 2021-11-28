@@ -6,14 +6,6 @@ class registro{
 }
 class verificacion {
 	
-	veri(usu){
-		if (usu.nombre === 'diego'){
-			alert('diego hola');
-		}
-		
-		
-	}
-	
 	
 	usuarioerror(){
 		
@@ -40,12 +32,17 @@ document.getElementById('ingreso-form').addEventListener('submit',function(e){
 	const secret = document.getElementById('contraseñas').value;
 	console.log(nombre,secret);
 	
+	if (nombre === 0){
+			alert('diego hola');
+	}
 	
-	
-	const usu = new registro(nombre,secret);
+	const usu = (nombre);
 	const ui = new verificacion();
 	ui.mostrarmensaje('como sea');
-	
 	e.preventDefault();
+	
+	
+	
+	
 })
 }
