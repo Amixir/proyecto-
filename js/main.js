@@ -5,15 +5,23 @@ class registro{
 	}
 }
 class verificacion {
-	showMessage(){
+	
+	mostrarmensaje(message, cssClass){
+		const mesa = (document.createElement('div'));
+		mesa.className ='alert alert-${cssClass}';
+		mesa.appendChild(document.createTextNode(message));
 		
 	}
+	
 }
 
 //eventos al dar click
 window.onload=function(){
 document.getElementById('ingreso-form').addEventListener('submit',function(){
-	document.getElementById('usuarios').value
-	console.log(document.getElementById('usuarios').value)
+	const nombre = document.getElementById('usuarios').value;
+	const secret = document.getElementById('contraseñas').value;
+	console.log(nombre,secret);
+	
+	
 })
 }
