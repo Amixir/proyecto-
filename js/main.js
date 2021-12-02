@@ -1,3 +1,5 @@
+alert("hola")
+
 class registro{
 	constructor(usuarios,contraseñas){
 		this.usuario=usuarios;
