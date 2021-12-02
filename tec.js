@@ -1,7 +1,5 @@
-alert('puta')
-console.log("puta")
 
-class datos{
+class product {
     constructor(Contenedor,UCR,Cantidad){
         this.Contenedor = contenedor;
         this.UCR = UCR;
