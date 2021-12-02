@@ -1,44 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8"/>
-	<meta name="viewport" content="width=device-width, initial scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Devolucion</title>
-	<link href="css/contenedores.css" rel="stylesheet"/>
-	<script src="js/main.js"></script>
-</head>
-
-<body>
-	<h1>¡Ingreso</h1>
-	<h1>Contenedores!</h1>
-	<section class="form-register">
-	<form method="post" section="">
-		<div class="login-container">
-		<div class="usuarios">
-		<main class="contenedor">	
-		<main>
-		<input  class="controls" id="Contenedor 1 " type="text" name="Contenedor1" placeholder="Contenedor 1" required="">
-		<input  class="controls" id="Contenedor 2 " type="text" name="Contenedor1" placeholder="Contenedor 2" required="">
-		<input  class="controls" id="Contenedor 3" type="text" name="Contenedor1" placeholder="Contenedor 3" required="">
-		<input  class="controls" id="Contenedor 4" type="text" name="Contenedor1" placeholder="Contenedor 4" required="">
-		<input  class="controls" id="Contenedor 5 " type="text" name="Contenedor1" placeholder="Contenedor 5" required="">
-
-		<a href="ingreso.html">  <!--<p>Pagina para ingresar mas</p>-->
-      	<input class="button" type="button" value="Ingresar mas contenedores"> </a>
-      	<br>
-		<a href="ucr.html">
-		<input class="button" type="button" value="Continuar"><!--<p>Continuar con los datos</p>-->
-		<br>
-		<a href="index.html">  <!--<p>Pagina para ingresar mas</p>-->
-      	<input class="button" type="button" value="Volver">
-		</section>
-	</form>
-		</div>
-		</main>
-		</div>
-		</div>
-		</div>
-	</div>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GRUPO EXITO</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/zephyr/bootstrap.min.css">
+    <link rel="stylesheet" href="App.css">
+	</head>
+	<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">GRUPO EXITO</a>
+    </nav>
+	<div class="contenedores">
+        	<div id="aplicacionP1" class="row pt-5">
+				<div class="row justify-content-start">
+            <div class="col-4">
+                <div class="card">
+                    <div class="card-header">
+						<div class ="col-auto p-5 text-center">
+							<div class="m-0 row justify-content-center">
+                        		<h4>INGRESA LOS CONTENEDORES</h4>
+                    				<form id="contenedor-form" class="card-body">
+                        				<div class="form-group">
+                            				<input type="text" id="contenedor" placeholder="CONTENEDOR" class="form-control"><br>
+										</div>
+											<div class="form-group">
+												<input type="number" id="ucr" placeholder="CODIGO UCR" class="form-control" min="1" max="15"><br>
+											</div>
+											<div class="form-group">
+												<input type="number" id="cantidaducr" placeholder="CANTIDAD UCR" min="1" class="form-control"><br>
+											</div>
+											<input type="submit" value="INGRESAR" text="center" class="btn btn-primary btn-block">
+											<!-- <a href="ucr.html">
+											<input class="btn btn-primary btn-block" type="button" value="Continuar" id ="guardar"></a> -->
+									</form>
+							</div>				
+                        </div>            
+					</div>
+				</div>
+            </div>
+			
+				<div class="col-4">
+					<div class="card">
+						<div class="card-header">
+							<div class ="col-auto p-5 text-center">
+								<div class="m-0 row justify-content-center">
+									<h4>INGRESA LOS DATOS DEL TRANSPORTADOR</h4>
+										<form id="transporte-form" class="card-body">
+											<div class="form-group">
+												<input type="text" id="PLACA" placeholder="PLACA DEL VEHICULO" class="form-control"><br>
+											</div>
+												<div class="form-group">
+													<input type="number" id="cedula" placeholder="CEDULA CONDUCTOR" class="form-control" ><br>
+												</div>
+												<div class="form-group">
+													<input type="number" id="tipovehiculo" placeholder="TIPO VEHICULO"  class="form-control"><br>
+												</div>
+												<input type="submit" value="INGRESAR" text="center" class="btn btn-primary btn-block">
+												<!-- <a href="ucr.html">
+												<input class="btn btn-primary btn-block" type="button" value="Continuar" id ="guardar"></a> -->
+										</form>
+								</div>				
+							</div>            
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		 </div>
+			</div>
+        </div>	 
+            <!-- PRODUCTS LIST -->
+            <div id="product-list" class="col-md-">
+        </div>
+    </div>
+    <script src="App.js" type="module"></script>
 	</body>
 	</html>
