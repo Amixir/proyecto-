@@ -7,7 +7,7 @@ class datos {
 }
 class listas{
     ingresardatos(datosc){
-        const product = (document.getElementById("lista-datos"));
+        const dato = (document.getElementById("lista-datos"));
         const element = document.createElement("div");
         element.innerHTML = `
         <div class="card text-center mb-4">
