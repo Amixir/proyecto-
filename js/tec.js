@@ -6,8 +6,20 @@ class datos {
     }
 }
 class listas{
-    ingresardatos(){
-
+    ingresardatos(datosc){
+        const product = (document.getElementById("lista-datos"));
+        const element = document.createElement("div");
+        element.innerHTML = `
+        <div class="card text-center mb-4">
+            <div class ="card body">
+                <strong>datosc</strong>: ${datosc.Contenedor}
+                <strong>datosuc</strong>: ${datosc.ucr}
+                <strong>datosca</strong>: ${datosc.Cantidad}
+            </div>
+        </div>
+        `;
+        datosc.appendChild(element);
+    
     }
 
     mostrarmensajes(){
@@ -25,17 +37,24 @@ document.getElementById('contenedor-form').addEventListener('submit', function(e
     const Cantidad = document.getElementById("cantidaducr").value
     console.log(Contenedor, ucr, Cantidad);
 
-    var str,
-element = document.getElementById('contenedor');
-if (element != null) {
-    str = element.value;
-}
-else {
-    str = null;
-}
-console.log(str);
+    const datosc = new datos(Contenedor,ucr,Cantidad);
+    const dat = new listas();
+    dat.ingresardatos(datosc);
 
-    console.log(new datos(Contenedor,ucr,Cantidad));
+
+// if para  revisar si esta fallando la declaracionde una varible
+//     var str,
+// element = document.getElementById('cantidaducr');
+// if (element != null) {
+//     str = element.value;
+// }
+// else {
+//     str = null;
+// }
+// console.log(str);
+
+    
+
     // ESTO HAY QUE QUITARLO CUANDO SE AGREGUE EL SERVIDOR
     e.preventDefault()
 })
