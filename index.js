@@ -3,15 +3,48 @@ const app = express();
 const port = 3000;
 const mongoose = require("mongoose");
 
-app.use(require('body-parser').urlencoded({extended: false}));
+app.use(require('body-parser').urlencoded({ extended: false }));
 
 mongoose.connect("mongodb://localhost/Proyecto");
 
-const Usuari = mongoose.model("usuarios",{
-    Usuario:String,
-    Contraseña:String
+const Usuarios = mongoose.model("Usuarios",{
+    nombre:String,
+    contraseña:String,
+    dependencia:String
+});
+app.get("/listar",(req,res)=>{
+
+    Usuarios.find((err,doc)=>{
+        console.log(doc);
+        console.log(doc[0]);
+        let html ="";
+        let usuario;
+        for (var i in doc){
+                usuario = doc[i];
+                html+=`<span>${usuario.nombre}</span>
+                <span>${usuario.dependencia}</span> <span>${usuario.contraseña}</span><br>`;
+
+        }
+        
+            res.send(html);
+    });
 });
 
+app.post ("/grabar", (req,res)=>{
+    res.send("lo que se le manda al navegador");
+    new Usuarios({
+        nombre:req.body.nombre,
+        dependencia:req.body.dependencia,
+        contraseña:req.body.contraseña
+        
+    }).save().then(()=>console.log("exito"))
+});
+
+// app.post("/grabar",(req,res)=>{
+//     new Usuarios(req.body).save().then(()=>{
+//         res.send("usuario guardado");
+//     });
+//     });
 
 
 app.get("/registro",(req,res)=>{
@@ -24,89 +57,77 @@ app.get("/registro",(req,res)=>{
 <title>GranDespacho</title>
 <link rel="stylesheet" href="https://bootswatch.com/5/zephyr/bootstrap.min.css">
 <link href="css/main12.css" rel="stylesheet" />
-<script src="js/main.js"></script>
+
 </head>
 <body>
-<nav>
-<class="navbar navbar-expand-lg navbar-light bg-light>
-<a href="https://www.exito.com/">Grupo Exito</a>
-</nav>
-<br>
-<h1 class="titulo"> GranDespacho </h1>
-</center>
-<div class="contenedoringreso">
-<div id="aplicacion" class="row pt-10">
-<div class="m-0 row justify-content-center">
-<div class ="col-auto p-5 text-center">
-<div class="card">
-<div class="card-header">
-	
-</div>
-<form id='ingreso-form' class="card-body" action="/grabar" method="post" >
+
+<form  class="card-body" action="/grabar" method="post" >
 <h2 class="titulo">INGRESO </h2>
 <center>
 <img src="img/logo.jpg" width="100" height="100"  >
 </center>
 <br>
-<div class="form-groupp">
-<input type="text" id="Usuario" placeholder="usuario" class="form.control"><br>
-</div>
-<div class="form-group">
-<input type="password" id="Contraseña" placeholder="contraseña" class="password"><br><br>
-</div>
+<label for="nombre">
+<input type="text" name="nombre" id="nombre" placeholder="nombre" class="form.control"><br>
+</label>
+<label for="dependencia">
+<input type="text" name="dependencia" id="dependencia" placeholder="dependencia" class="form.control"><br>
+</label>
+<label for="contraseña">
+<input type="password" name="contraseña" id="contraseña" placeholder="contraseña" class="form.control"><br>
+</label>
 <input type='submit' class="btn btn-lg btn-primary btn-block" value="Ingresar"><br>
 </form>
-</div>
-</div>
-</div>
-</div>
-</div>
-<script src="main.js"></script>
+
+
 </body>
 </html>
     `;
     res.send(formulario);
 
-    
 });
 
-app.post ("/grabar", (req,res)=>{
-    new Usuari(req.body).save().then(()=>{
-    res.send("usuario guardado con exito")});
-});
-
-
-
-// app.get ("/grabar", (req,res)=>{
-//     res.send("lo que se le manda al navegador");
-//     new Usuarios({
-//         Usuario:"Andresc",
-//         Contraseña:"1234567"
-//     }).save().then(()=>console.log("exito"))
-// });
-
-    app.get("/listar", (req,res)=>{
-      
-     Usuarios.find((err,doc)=>{
-         console.log(doc);
-         console.log(doc[1]);
-         let html ="";
-         let usuario; 
-         for(var i in doc){
-             usuario = doc[i];
-           html +=`<span>${usuario.Usuario}</span> 
-                     <span>${usuario.Contraseña}</span><br>`;
-         }
-         res.send(html);
-     });
-});
-
-
- 
-
-
-
- 
 app.listen(port, ()=>{
     console.log("empezo el servidor"); 
 });      
+
+// });
+
+// app.get ("/grabar", (req,res)=>{
+//     new Usuarios(req.body).save().then(()=>{
+//         console.log(req.body);
+//         console.log(Usuarios);
+//     res.send("usuario guardado con exito")});
+// });
+
+
+
+
+
+//     app.get("/listar", (req,res)=>{
+      
+//      Usuarios.find((err,doc)=>{
+//          console.log(doc);
+//         //  console.log(doc[1]);
+//         //  console.log(Usuarios);
+//          let html ="";
+//          let usuario; 
+//          for(var i in doc){
+//              usuario = doc[i];
+//            html +=`<span>${usuario.Usuario}</span>
+//                      <span>${usuario.Dependencia}</span><br> 
+//                          <span>${usuario.Contraseña}</span><br>`;
+                        
+//          }
+//          res.send(html);
+//      });
+// });
+
+
+
+
+ 
+
+
+
+ 
