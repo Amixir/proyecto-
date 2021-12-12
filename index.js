@@ -60,6 +60,7 @@ app.get("/ingreso",(req,res)=>{
         `;
         res.send(ingreso);
 });
+// GUARDAR USUARIOS Y MOSTRAR MENSAJE DE GUARDADO.
 
 app.post ("/validar", (req,res)=>{    
     new Ingreso({
@@ -77,9 +78,6 @@ app.post ("/validar", (req,res)=>{
                 </label>`
             res.send(html); });
 
-
-
-
 // app.post ("/validar", (req,res)=>{
 //        Usuarios.find((err,doc)=>{
 //         console.log(doc);
@@ -90,15 +88,9 @@ app.post ("/validar", (req,res)=>{
 // //                 <span>${usuario.dependencia}</span> <span>${usuario.contraseña}</span> | `;
 //                 html+=`<a href="/borrar?id=${usuario._id}">Borrar</a><br>`;
 //         }        
-//             res.send(html);
+//             res.send(html);   
 
-    // new Usuarios({
-    //     nombre:req.body.nombre,
-    //     contraseña:req.body.contraseña        
-    // }).save().then(()=>res.send(Usuarios));
-// };
-// });
-// });
+// PAGINA DE REGISTRO
 
 app.get("/registro",(req,res)=>{
     let formulario = `
@@ -136,9 +128,11 @@ app.get("/registro",(req,res)=>{
     res.send(formulario);
 
 });
+
+// GUARDAR USUARIOS NUEVOS Y MOSTRAR MENSAJE.
+
 app.post ("/", (req,res)=>{
-    // res.send("usuario guardado <a href=/ingreso>Continuar</a>");
-    new Usuarios({
+        new Usuarios({
         nombre:req.body.nombre,
         dependencia:req.body.dependencia,
         contraseña:req.body.contraseña        
@@ -146,14 +140,11 @@ app.post ("/", (req,res)=>{
 
     let html = "";
     html+=`
-    <label for= "guardado">
-    <div class="alert alert-dismissible alert-success">                
-    <strong>NUEVO USUARIO GUARDADO</strong> <a href="/ingreso" class="btn-close" data-bs-dismiss="alert"> CONTINUAR </a>.
-    </div>
-    </label>`
-            // html+=`<span>"BIENVENIDO"</span><br>`;
-            // html+=`"<a href="/novedad">Continuar</a>"`;     
-    
+        <label for= "guardado">
+        <div class="alert alert-dismissible alert-success">                
+        <strong>NUEVO USUARIO GUARDADO</strong> <a href="/ingreso" class="btn-close" data-bs-dismiss="alert"> CONTINUAR </a>.
+        </div>
+        </label>`              
     res.send(html); });
 
 
@@ -186,9 +177,7 @@ app.post ("/", (req,res)=>{
 // //     });
 // // });
 
-
-
-
+// PAGINA INGRESO TRANSPORTADOR.
 
 app.get("/novedad",(req,res)=>{
     let pagina = `
@@ -225,6 +214,8 @@ const Vehiculos = mongoose.model("Vehiculos",{
     cedula:String
 });
 
+// GUARDAR TRANSPORTADOT Y MOSTRAR MENSAJE.
+
 app.post ("/transportador", (req,res)=>{
        new Vehiculos({
         placa:req.body.placa,
@@ -238,6 +229,9 @@ app.post ("/transportador", (req,res)=>{
             </div>
             </label>`
     res.send(html); });
+
+
+// PAGINA DE CONTENEDORES.
 
 app.get("/contenedor",(req,res)=>{
     let contec = `
@@ -286,6 +280,8 @@ app.get("/contenedor",(req,res)=>{
 res.send(contec);
 });
 
+//GUARDAR CONTENEDORES Y MOSTRAR MENSAJE.
+
 const Contenedor = mongoose.model("Contenedor",{
     contenedor:String,
     cantidad:Number,
@@ -302,14 +298,14 @@ app.post ("/contenedorfinal", (req,res)=>{
     html+=`
             <label for= "correcto">
             <div class="alert alert-dismissible alert-success">                
-            <strong>CONTENEDOR GUARDADO</strong> <a href="/final" class="btn-close" data-bs-dismiss="alert"> CONTINUA </a>.
+            <strong>CONTENEDOR GUARDADO</strong> <a href="/contenedor" class="btn-close" data-bs-dismiss="alert"> mas contenedores </a>.
+            <a href="/final" class="btn-close" data-bs-dismiss="alert"> CONTINUA </a>.
             </div>
             </label>`
     res.send(html); });
 
 app.get("/final",(req,res)=>{
     Vehiculos.find((err,doc)=>{
-        console.log(doc);
         let html ="";
         let carro;
         for (var i in doc){
@@ -325,7 +321,6 @@ app.get("/final",(req,res)=>{
 
 app.get("/contemos",(req,res)=>{
     Contenedor.find((err,doc)=>{
-        console.log(doc);
         let html ="";
         let contenedora;
         for (var i in doc){
